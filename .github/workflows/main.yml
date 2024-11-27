@@ -21,3 +21,16 @@ jobs:
 
       - name: Hello World
         run: dir
+
+      - name: Create artifact directory
+        run: mkdir artifact/PhysicsGame/
+        
+      - name: Copy build files to the artifact directory
+        run: copy ./Build/PhysicsGame/Release/Win32/PhysicsGame.exe ./artifact/PhysicsGame/
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-app
+          path: artifact/
+
